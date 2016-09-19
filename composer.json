@@ -1,0 +1,21 @@
+{
+    "name": "zenapply/php-viddler",
+    "type": "library",
+    "description": "",
+    "keywords": [
+        "php",
+        "viddler",
+        "video",
+        "zenapply"
+    ],
+    "homepage": "https://github.com/zenapply/php-viddler",
+    "license": "MIT",  
+    "autoload":{
+    	"psr-4":{
+            "Zenapply\\Viddler\\Api\\":"src/"
+        },
+    },
+    "require": {
+        "php": ">=5.1.0"
+    },
+}
