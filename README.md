@@ -5,9 +5,7 @@
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/zenapply/php-viddler/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/zenapply/php-viddler/?branch=master)
 [![Code Coverage](https://scrutinizer-ci.com/g/zenapply/php-viddler/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/zenapply/php-viddler/?branch=master)
 [![Dependency Status](https://www.versioneye.com/user/projects/56f3252c35630e0029db0187/badge.svg?style=flat)](https://www.versioneye.com/user/projects/56f3252c35630e0029db0187)
-[![Total Downloads](https://img.shields.io/packagist/dt/zenapply/php-viddler.svg?style=flat-square)](https://packagist.org/packages/zenapply/php-viddler)
-
-This package is copied from _ under the MIT License.
+[![Total Downloads](https://img.shields.io/packagist/dt/zenapply/php-viddler.svg?style=flat-square)](https://packagist.org/packages/zenapply/php-viddler) 
 
 ## Installation
 
@@ -22,3 +20,7 @@ composer require zenapply/php-viddler
 use Zenapply\Viddler\Api\Viddler;
 $viddler = new Viddler();
 ```
+
+## Licensing
+
+This package was copied from [Viddler, Inc.](https://github.com/viddler/phpviddler) under the MIT License.
