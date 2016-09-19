@@ -18,7 +18,7 @@ composer require zenapply/php-viddler
 
 ```php
 use Zenapply\Viddler\Api\Viddler;
-$viddler = new Viddler();
+$viddler = new Viddler("api_key");
 ```
 
 ## Licensing
