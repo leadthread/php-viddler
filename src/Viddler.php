@@ -1,6 +1,6 @@
 <?php
 
-namespace Zenapply\Viddler\Api\V2;
+namespace Zenapply\Viddler\Api;
 
 /**
  * Viddler PHP Wrapper for Viddler's API 

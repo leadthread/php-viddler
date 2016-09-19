@@ -19,6 +19,6 @@ composer require zenapply/php-viddler
 ## Usage
 
 ```php
-use Zenapply\Viddler\Api\V2\Viddler;
+use Zenapply\Viddler\Api\Viddler;
 $viddler = new Viddler();
 ```
