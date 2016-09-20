@@ -94,10 +94,10 @@ class Viddler
         }
 
         // Get the url
-        $url = $this->buildUrl($method);
+        $url = $this->buildUrl($method, $args);
 
         // Execute it
-        return $this->execute($url);
+        return $this->execute($method, $args, $url);
     }
 
     /**
@@ -108,24 +108,7 @@ class Viddler
         return (in_array($method, $this->secureMethods) || $this->secure === true) ? "https" : "http";
     }
 
-    protected function handleResponse($response)
-    {
-        if (!$response) {
-            $response = $error = curl_error($ch);
-
-            return $response;
-        } else {
-            $response = unserialize($response);
-        }
-
-        curl_close($ch);
-
-        $response = $this->checkResponseForErrors($response);
-
-        return $response;
-    }
-
-    protected function buildUrl($method)
+    protected function buildUrl($method, $args)
     {
         // Used to construct the querystring.
         $query = array();
@@ -163,6 +146,8 @@ class Viddler
             $query = null;
             $args[0] = array();
         }
+
+        return $url;
     }
 
     protected function isPost($method)
@@ -178,7 +163,7 @@ class Viddler
     /**
      * Executes the request
      */
-    protected function execute($url)
+    protected function execute($method, $args, $url)
     {
         // Construct the cURL call
         $ch = curl_init();
@@ -191,7 +176,7 @@ class Viddler
         // Figure POST vs. GET
         if ($this->isPost($method)) {
             curl_setopt($ch, CURLOPT_POST, true);
-            if ($binary === true) {
+            if ($this->isBinary($method)) {
                 $binary_args = array();
                 foreach ($args[0] as $k => $v) {
                     if ($k != 'file') {
@@ -219,6 +204,18 @@ class Viddler
 
         //Get the response
         $response = curl_exec($ch);
+
+        if (!$response) {
+            throw new \Exception(curl_error($ch));
+        } else {
+            $response = unserialize($response);
+        }
+
+        curl_close($ch);
+
+        $response = $this->checkResponseForErrors($response);
+
+        return $response;
     }
 
     protected function checkResponseForErrors($response)
@@ -252,6 +249,8 @@ class Viddler
                     throw new Exceptions\ViddlerForbiddenException($msg);
                 case "100":
                     throw new Exceptions\ViddlerNotFoundException($msg);
+                case "8":
+                    throw new Exceptions\ViddlerInvalidApiKeyException($msg);
                 default:
                     throw new Exceptions\ViddlerException($msg);
             }

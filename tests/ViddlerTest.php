@@ -16,6 +16,5 @@ class ViddlerTest extends TestCase
     {
         $v = new Viddler("token");
         $resp = $v->viddler_users_auth(array('user' => "user", 'password' => "pass"));
-        dd($resp);
     }
 }
