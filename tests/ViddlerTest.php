@@ -3,6 +3,7 @@
 namespace Zenapply\Viddler\Api\Tests;
 
 use Zenapply\Viddler\Api\Viddler;
+use Zenapply\Viddler\Api\Exceptions\ViddlerInvalidApiKeyException;
 
 class ViddlerTest extends TestCase
 {
@@ -14,6 +15,7 @@ class ViddlerTest extends TestCase
 
     public function testCall()
     {
+        $this->setExpectedException(ViddlerInvalidApiKeyException::class);
         $v = new Viddler("token");
         $resp = $v->viddler_users_auth(array('user' => "user", 'password' => "pass"));
     }
