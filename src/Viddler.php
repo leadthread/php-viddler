@@ -173,7 +173,7 @@ class Viddler
         $response = curl_exec($ch);
 
         if (!$response) {
-            throw new ViddlerException(curl_error($ch));
+            throw new Exceptions\ViddlerException(curl_error($ch));
         } else {
             $response = unserialize($response);
         }
