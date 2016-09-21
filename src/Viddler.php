@@ -84,7 +84,7 @@ class Viddler
      *
      * $viddler->viddler_users_auth();
      */
-    protected function call($method, $args, $call)
+    protected function call($method, $args)
     {
         $method = str_replace("_", ".", $method);
         
@@ -137,7 +137,6 @@ class Viddler
                     array_push($query, "$k=$v");
                 }
             }
-            $query_arr = $query;
             $query = implode("&", $query);
             if (!$this->isPost($method)) {
                 $url .= (!empty($query)) ? "&" . $query : "";
