@@ -1,6 +1,7 @@
 # Viddler V2
 [![Latest Version](https://img.shields.io/github/release/zenapply/php-viddler.svg?style=flat-square)](https://github.com/zenapply/php-viddler/releases)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
+[![HHVM Status](http://hhvm.h4cc.de/badge/zenapply/php-viddler.svg?style=flat-square)](http://hhvm.h4cc.de/package/zenapply/php-viddler)
 [![Build Status](https://travis-ci.org/zenapply/php-viddler.svg?branch=master)](https://travis-ci.org/zenapply/php-viddler)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/zenapply/php-viddler/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/zenapply/php-viddler/?branch=master)
 [![Code Coverage](https://scrutinizer-ci.com/g/zenapply/php-viddler/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/zenapply/php-viddler/?branch=master)
