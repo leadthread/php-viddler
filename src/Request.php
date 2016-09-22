@@ -194,7 +194,7 @@ class Request
             $bArgs['key'] = $this->apiKey;
         }
             // Update for PHP 5.5.0 and above to use new CURLFile class
-        if (version_compare(PHP_VERSION, '5.5.0', '>=') == true) {
+        if (version_compare(PHP_VERSION, '5.5.0', '>=') === true) {
             $bArgs['file'] = curl_file_create($this->options[0]['file']);
         } else {
             $bArgs['file'] = '@' . $this->options[0]['file'];
