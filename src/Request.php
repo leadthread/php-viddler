@@ -23,7 +23,7 @@ class Request
         'viddler.users.auth',
         'viddler.users.register'
     ];
-    
+
     /**
      * Methods that require POST
      */
@@ -60,6 +60,23 @@ class Request
         'viddler.videos.setDetails',
         'viddler.videos.setPermalink',
         'viddler.videos.setThumbnail',
+    ];
+
+    /**
+     * A Mapping of what Exception to throw when Viddler returns a certain error code
+     */
+    protected $exceptions = [
+        "203"     => Exceptions\ViddlerUploadingDisabledException::class,
+        "202"     => Exceptions\ViddlerInvalidFormTypeException::class,
+        "200"     => Exceptions\ViddlerSizeLimitExceededException::class,
+        "105"     => Exceptions\ViddlerUsernameExistsException::class,
+        "104"     => Exceptions\ViddlerTermsNotAcceptedException::class,
+        "103"     => Exceptions\ViddlerInvalidPasswordException::class,
+        "102"     => Exceptions\ViddlerAccountSuspendedException::class,
+        "101"     => Exceptions\ViddlerForbiddenException::class,
+        "100"     => Exceptions\ViddlerNotFoundException::class,
+        "8"       => Exceptions\ViddlerInvalidApiKeyException::class,
+        "default" => Exceptions\ViddlerException::class
     ];
 
     public function __construct($apiKey, $method, $options, $secure = false)
@@ -194,37 +211,21 @@ class Request
         if (isset($response["error"])) {
             $msg = [];
             $parts = ["code", "description", "details"];
+            
             foreach ($parts as $part) {
                 if (!empty($response["error"][$part])) {
                     $msg[] = $part.": ".$response["error"][$part];
                 }
             }
-            $msg = implode(" | ", $msg);
 
-            switch ($response["error"]["code"]) {
-                case "203":
-                    throw new Exceptions\ViddlerUploadingDisabledException($msg);
-                case "202":
-                    throw new Exceptions\ViddlerInvalidFormTypeException($msg);
-                case "200":
-                    throw new Exceptions\ViddlerSizeLimitExceededException($msg);
-                case "105":
-                    throw new Exceptions\ViddlerUsernameExistsException($msg);
-                case "104":
-                    throw new Exceptions\ViddlerTermsNotAcceptedException($msg);
-                case "103":
-                    throw new Exceptions\ViddlerInvalidPasswordException($msg);
-                case "102":
-                    throw new Exceptions\ViddlerAccountSuspendedException($msg);
-                case "101":
-                    throw new Exceptions\ViddlerForbiddenException($msg);
-                case "100":
-                    throw new Exceptions\ViddlerNotFoundException($msg);
-                case "8":
-                    throw new Exceptions\ViddlerInvalidApiKeyException($msg);
-                default:
-                    throw new Exceptions\ViddlerException($msg);
+            $msg = implode(" | ", $msg);
+            $code = $response["error"]["code"];
+
+            if (!array_key_exists($code, $this->exceptions)) {
+                $code = "default";
             }
+
+            throw new $this->exceptions[$code]($msg);
         }
 
         return $response;
