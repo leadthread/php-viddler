@@ -3,6 +3,7 @@
 namespace Zenapply\Viddler\Api\Tests;
 
 use Zenapply\Viddler\Api\Tests\Mocks\ViddlerMocked;
+use Zenapply\Viddler\Api\Tests\Mocks\RequestMocked;
 use Zenapply\Viddler\Api\Viddler;
 use Zenapply\Viddler\Api\Exceptions\ViddlerInvalidApiKeyException;
 
@@ -51,7 +52,7 @@ class ViddlerTest extends TestCase
             "default" => \Zenapply\Viddler\Api\Exceptions\ViddlerException::class
         ];
 
-        $v = new ViddlerMocked("apiKey");
+        $v = new RequestMocked("apiKey", "method", []);
         foreach ($exceptions as $code => $exception) {
             try {
                 $v->checkResponseForErrors([
@@ -59,8 +60,7 @@ class ViddlerTest extends TestCase
                 ]);
                 $this->fail('No exception thrown');
             } catch (\Exception $e) {
-                // var_dump(get_class($e));
-                // $this->assertInstanceOf($exception, $e);
+                $this->assertInstanceOf($exception, $e);
             }
         }
     }
