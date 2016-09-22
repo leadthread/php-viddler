@@ -9,7 +9,6 @@ namespace Zenapply\Viddler\Api;
  */
 class Viddler
 {
-
     public $apiKey = null;
     public $secure  = false;
 
@@ -205,7 +204,7 @@ class Viddler
         $response = curl_exec($ch);
 
         if (!$response) {
-            throw new \Exception(curl_error($ch));
+            throw new Exceptions\ViddlerException(curl_error($ch));
         } else {
             $response = unserialize($response);
         }
