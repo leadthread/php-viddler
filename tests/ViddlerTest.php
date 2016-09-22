@@ -10,27 +10,27 @@ class ViddlerTest extends TestCase
 {
     public function testItCreatesSuccessfully()
     {
-        $r = new Viddler("token");
+        $r = new Viddler("apiKey");
         $this->assertInstanceOf(Viddler::class, $r);
     }
 
     public function testCall()
     {
-        $v = new ViddlerMocked("token");
+        $v = new ViddlerMocked("apiKey");
         $resp = $v->viddler_users_auth(array('user' => "user", 'password' => "pass"));
         $this->assertInternalType('array', $resp);
     }
 
     public function testCallPost()
     {
-        $v = new ViddlerMocked("token");
+        $v = new ViddlerMocked("apiKey");
         $resp = $v->viddler_encoding_cancel(array('user' => "user", 'password' => "pass"));
         $this->assertInternalType('array', $resp);
     }
 
     public function testCallBinary()
     {
-        $v = new ViddlerMocked("token");
+        $v = new ViddlerMocked("apiKey");
         $resp = $v->viddler_videos_setThumbnail(array('user' => "user", 'password' => "pass"));
         $this->assertInternalType('array', $resp);
     }
@@ -51,7 +51,7 @@ class ViddlerTest extends TestCase
             "default" => \Zenapply\Viddler\Api\Exceptions\ViddlerException::class
         ];
 
-        $v = new ViddlerMocked("token");
+        $v = new ViddlerMocked("apiKey");
         foreach ($exceptions as $code => $exception) {
             try {
                 $v->checkResponseForErrors([
