@@ -29,11 +29,26 @@ class ViddlerTest extends TestCase
         $this->assertInternalType('array', $resp);
     }
 
-    public function testCallBinary()
+    public function testBinaryArgs()
     {
-        $v = new ViddlerMocked("apiKey");
-        $resp = $v->viddler_videos_setThumbnail(array('user' => "user", 'password' => "pass"));
-        $this->assertInternalType('array', $resp);
+        $v = new RequestMocked("apiKey", "viddler.videos.setThumbnail", [[
+            'file' => 'file',
+        ]]);
+        $args = $v->getBinaryArgs();
+        $this->assertInternalType('array', $args);
+    }
+
+    public function testValidResponse()
+    {
+        $valid = [
+            "viddler_api" => [
+                "version" => "3.9.0"
+            ]
+        ];
+        $v = new RequestMocked("apiKey", "method", []);
+        $response = $v->checkResponseForErrors($valid);
+
+        $this->assertEquals($valid, $response);
     }
 
     public function testExceptions()
@@ -49,7 +64,8 @@ class ViddlerTest extends TestCase
             "101"     => \Zenapply\Viddler\Api\Exceptions\ViddlerForbiddenException::class,
             "100"     => \Zenapply\Viddler\Api\Exceptions\ViddlerNotFoundException::class,
             "8"       => \Zenapply\Viddler\Api\Exceptions\ViddlerInvalidApiKeyException::class,
-            "default" => \Zenapply\Viddler\Api\Exceptions\ViddlerException::class
+            "default" => \Zenapply\Viddler\Api\Exceptions\ViddlerException::class,
+            "random"  => \Zenapply\Viddler\Api\Exceptions\ViddlerException::class
         ];
 
         $v = new RequestMocked("apiKey", "method", []);

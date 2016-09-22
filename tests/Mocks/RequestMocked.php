@@ -13,4 +13,9 @@ class RequestMocked extends \Zenapply\Viddler\Api\Request
     {
         return parent::checkResponseForErrors($response);
     }
+
+    public function getBinaryArgs()
+    {
+        return parent::getBinaryArgs();
+    }
 }

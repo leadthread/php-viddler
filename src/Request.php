@@ -198,7 +198,7 @@ class Request
             $bArgs['file'] = curl_file_create($this->options[0]['file']);
         } else {
             $bArgs['file'] = '@' . $this->options[0]['file'];
-        }
+        }  
 
         return $bArgs;
     }
