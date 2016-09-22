@@ -8,4 +8,9 @@ class ViddlerMocked extends \Zenapply\Viddler\Api\Viddler
     {
         return [];
     }
+
+    public function checkResponseForErrors($response)
+    {
+        return parent::checkResponseForErrors($response);
+    }
 }
