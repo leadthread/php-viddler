@@ -74,7 +74,7 @@ class Viddler
      */
     public function __call($method, $args)
     {
-        return self::call($method, $args, "object");
+        return self::call($method, $args);
     }
 
     /**
@@ -86,11 +86,6 @@ class Viddler
     protected function call($method, $args)
     {
         $method = str_replace("_", ".", $method);
-        
-        //If the method exists here, call it
-        if (method_exists($this, $method)) {
-            return $this->$method($args[0]);
-        }
 
         // Get the url
         $url = $this->buildUrl($method, $args);

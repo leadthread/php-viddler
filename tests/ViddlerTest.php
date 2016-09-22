@@ -20,4 +20,18 @@ class ViddlerTest extends TestCase
         $resp = $v->viddler_users_auth(array('user' => "user", 'password' => "pass"));
         $this->assertInternalType('array', $resp);
     }
+
+    public function testCallPost()
+    {
+        $v = new ViddlerMocked("token");
+        $resp = $v->viddler_encoding_cancel(array('user' => "user", 'password' => "pass"));
+        $this->assertInternalType('array', $resp);
+    }
+
+    public function testCallBinary()
+    {
+        $v = new ViddlerMocked("token");
+        $resp = $v->viddler_videos_setThumbnail(array('user' => "user", 'password' => "pass"));
+        $this->assertInternalType('array', $resp);
+    }
 }
