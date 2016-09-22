@@ -33,6 +33,7 @@ class ViddlerTest extends TestCase
     {
         $v = new RequestMocked("apiKey", "viddler.videos.setThumbnail", [[
             'file' => 'file',
+            'random' => 'value'
         ]]);
         $args = $v->getBinaryArgs();
         $this->assertInternalType('array', $args);
