@@ -53,10 +53,14 @@ class ViddlerTest extends TestCase
 
         $v = new ViddlerMocked("token");
         foreach ($exceptions as $code => $exception) {
-            $this->setExpectedException($exception);
-            $v->checkResponseForErrors([
-                "error" => ["code" => $code]
-            ]);
+            try {
+                $v->checkResponseForErrors([
+                    "error" => ["code" => $code]
+                ]);
+                $this->fail('No exception thrown');
+            } catch (\Exception $e) {
+                $this->assertInstanceOf($exception, $e);
+            }
         }
     }
 }
