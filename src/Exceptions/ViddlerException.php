@@ -1,6 +1,6 @@
 <?php
 
-namespace Zenapply\Viddler\Api\Exceptions;
+namespace LeadThread\Viddler\Api\Exceptions;
 
 class ViddlerException extends \Exception
 {

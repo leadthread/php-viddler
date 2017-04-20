@@ -1,8 +1,8 @@
 <?php
 
-namespace Zenapply\Viddler\Api\Tests\Mocks;
+namespace LeadThread\Viddler\Api\Tests\Mocks;
 
-class RequestMocked extends \Zenapply\Viddler\Api\Request
+class RequestMocked extends \LeadThread\Viddler\Api\Request
 {
     protected function sendRequest($url, $params)
     {

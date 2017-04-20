@@ -1,6 +1,6 @@
 <?php
 
-namespace Zenapply\Viddler\Api\Tests;
+namespace LeadThread\Viddler\Api\Tests;
 
 class TestCase extends \PHPUnit_Framework_TestCase
 {

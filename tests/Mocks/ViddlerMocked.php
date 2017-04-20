@@ -1,8 +1,8 @@
 <?php
 
-namespace Zenapply\Viddler\Api\Tests\Mocks;
+namespace LeadThread\Viddler\Api\Tests\Mocks;
 
-class ViddlerMocked extends \Zenapply\Viddler\Api\Viddler
+class ViddlerMocked extends \LeadThread\Viddler\Api\Viddler
 {
     protected $requestClass = RequestMocked::class;
 }

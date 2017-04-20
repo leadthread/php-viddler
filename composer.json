@@ -1,23 +1,23 @@
 {
-    "name": "zenapply/php-viddler",
+    "name": "leadthread/php-viddler",
     "type": "library",
     "description": "",
     "keywords": [
         "php",
         "viddler",
         "video",
-        "zenapply"
+        "leadthread"
     ],
-    "homepage": "https://github.com/zenapply/php-viddler",
+    "homepage": "https://github.com/leadthread/php-viddler",
     "license": "MIT",  
     "autoload":{
     	"psr-4":{
-            "Zenapply\\Viddler\\Api\\":"src/"
+            "LeadThread\\Viddler\\Api\\":"src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Zenapply\\Viddler\\Api\\Tests\\": "tests/"
+            "LeadThread\\Viddler\\Api\\Tests\\": "tests/"
         }
     },
     "require": {

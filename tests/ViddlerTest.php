@@ -1,11 +1,11 @@
 <?php
 
-namespace Zenapply\Viddler\Api\Tests;
+namespace LeadThread\Viddler\Api\Tests;
 
-use Zenapply\Viddler\Api\Tests\Mocks\ViddlerMocked;
-use Zenapply\Viddler\Api\Tests\Mocks\RequestMocked;
-use Zenapply\Viddler\Api\Viddler;
-use Zenapply\Viddler\Api\Exceptions\ViddlerInvalidApiKeyException;
+use LeadThread\Viddler\Api\Tests\Mocks\ViddlerMocked;
+use LeadThread\Viddler\Api\Tests\Mocks\RequestMocked;
+use LeadThread\Viddler\Api\Viddler;
+use LeadThread\Viddler\Api\Exceptions\ViddlerInvalidApiKeyException;
 
 class ViddlerTest extends TestCase
 {
@@ -55,18 +55,18 @@ class ViddlerTest extends TestCase
     public function testExceptions()
     {
         $exceptions = [
-            "203"     => \Zenapply\Viddler\Api\Exceptions\ViddlerUploadingDisabledException::class,
-            "202"     => \Zenapply\Viddler\Api\Exceptions\ViddlerInvalidFormTypeException::class,
-            "200"     => \Zenapply\Viddler\Api\Exceptions\ViddlerSizeLimitExceededException::class,
-            "105"     => \Zenapply\Viddler\Api\Exceptions\ViddlerUsernameExistsException::class,
-            "104"     => \Zenapply\Viddler\Api\Exceptions\ViddlerTermsNotAcceptedException::class,
-            "103"     => \Zenapply\Viddler\Api\Exceptions\ViddlerInvalidPasswordException::class,
-            "102"     => \Zenapply\Viddler\Api\Exceptions\ViddlerAccountSuspendedException::class,
-            "101"     => \Zenapply\Viddler\Api\Exceptions\ViddlerForbiddenException::class,
-            "100"     => \Zenapply\Viddler\Api\Exceptions\ViddlerNotFoundException::class,
-            "8"       => \Zenapply\Viddler\Api\Exceptions\ViddlerInvalidApiKeyException::class,
-            "default" => \Zenapply\Viddler\Api\Exceptions\ViddlerException::class,
-            "random"  => \Zenapply\Viddler\Api\Exceptions\ViddlerException::class
+            "203"     => \LeadThread\Viddler\Api\Exceptions\ViddlerUploadingDisabledException::class,
+            "202"     => \LeadThread\Viddler\Api\Exceptions\ViddlerInvalidFormTypeException::class,
+            "200"     => \LeadThread\Viddler\Api\Exceptions\ViddlerSizeLimitExceededException::class,
+            "105"     => \LeadThread\Viddler\Api\Exceptions\ViddlerUsernameExistsException::class,
+            "104"     => \LeadThread\Viddler\Api\Exceptions\ViddlerTermsNotAcceptedException::class,
+            "103"     => \LeadThread\Viddler\Api\Exceptions\ViddlerInvalidPasswordException::class,
+            "102"     => \LeadThread\Viddler\Api\Exceptions\ViddlerAccountSuspendedException::class,
+            "101"     => \LeadThread\Viddler\Api\Exceptions\ViddlerForbiddenException::class,
+            "100"     => \LeadThread\Viddler\Api\Exceptions\ViddlerNotFoundException::class,
+            "8"       => \LeadThread\Viddler\Api\Exceptions\ViddlerInvalidApiKeyException::class,
+            "default" => \LeadThread\Viddler\Api\Exceptions\ViddlerException::class,
+            "random"  => \LeadThread\Viddler\Api\Exceptions\ViddlerException::class
         ];
 
         $v = new RequestMocked("apiKey", "method", []);

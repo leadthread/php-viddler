@@ -1,6 +1,6 @@
 <?php
 
-namespace Zenapply\Viddler\Api;
+namespace LeadThread\Viddler\Api;
 
 class Request
 {
